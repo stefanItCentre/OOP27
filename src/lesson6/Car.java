@@ -1,6 +1,7 @@
 package lesson6;
 
-public class Car {
+
+public class Car extends Object {
 	
 	private String model;
 
@@ -9,7 +10,11 @@ public class Car {
     private int maxTankCapacity;
     private int mileage;
     private boolean start;
-	
+
+
+//    public Car(){
+//
+//    }
 
 	public Car(String model, double fuelConsumption, int mtc){
 		this.model = model;
