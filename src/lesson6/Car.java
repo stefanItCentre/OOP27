@@ -2,15 +2,15 @@ package lesson6;
 
 public class Car {
 	
-	String model;
-	double fuelConsumption = 10;
-	double currentFuel;
-	int maxTankCapacity;
-	int mileage;
-	boolean isStart;
+	private String model;
+
+    private double fuelConsumption = 0.01;
+    private double currentFuel;
+    private int maxTankCapacity;
+    private int mileage;
+    private boolean start;
 	
-	
-	
+
 	public Car(String model, double fuelConsumption, int mtc){
 		this.model = model;
 		
@@ -18,9 +18,29 @@ public class Car {
 		maxTankCapacity = mtc;
 	}
 
-	
+    public String getModel(){
+        return model;
+    }
+
+    public void setModel(String model){
+        this.model = model;
+    }
+
+    public boolean isStart(){
+        return start;
+    }
+
+
+    public double getCurrentFuel(){
+        return currentFuel;
+    }
+
+    public int getMileage(){
+        return mileage;
+    }
+
 	public void start() {
-		isStart = currentFuel > 0;
+		start = currentFuel > 0;
 	}
 	
 	public void fill(double currentFuel){
@@ -37,8 +57,11 @@ public class Car {
 	}
 	
 	public void drive(int dst) {
-		if(isStart){
-			System.out.println("Я еду!!! =)");			
+
+		if(start){
+			System.out.println("Я еду!!! =)");
+            mileage += dst;
+            currentFuel -= dst * fuelConsumption;
 		} else {
 			System.out.println("Заведи меня..");
 		}
@@ -46,7 +69,8 @@ public class Car {
 	
 	public void printInfo(){
 		
-		System.out.printf("Model : %10s, fuel : %05.2f, mileage : %05d, is start : %b%n", model, currentFuel, mileage, isStart);
+		System.out.printf("Model : %10s, fuel : %05.2f, mileage : %05d, is start : %b%n", model, currentFuel, mileage, start);
 	}
+
 
 }
