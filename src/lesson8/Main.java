@@ -13,19 +13,25 @@ public class Main {
 
         Car truck2 = new Truck("");
 
+        Car car = new Car("", 0, 0);
+
         truck2.drive(10);
 
 
         truck.drive(10);
 
-//        fill(truck);
+        fill(truck);
+
+        fill((Truck)truck2);
+
+        fill((Truck)car);
 
 //        truck.
     }
 
 
 
-    public static void fill(Car car){
+    public static void fill(Truck car){
         car.fill(20);
 //        car.load();
     }
