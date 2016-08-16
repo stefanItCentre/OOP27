@@ -9,8 +9,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-
-
         ArrayList<Shape> shapes = new ArrayList<>();
 
         shapes.add(new Rectangle(10, 4));
@@ -20,12 +18,28 @@ public class Main {
         shapes.add(new Circle(4));
         shapes.add(new Rectangle(5, 8));
 
-
-
-
         for(Shape s : shapes){
             System.out.println(s);
         }
+
+
+        foo(new Circle(3));
+        foo(new Rectangle(10, 10));
+
+
+
+    }
+
+
+    public static void f(double b){
+
+    }
+
+    public static void f(boolean b){
+
+    }
+
+    public static void foo(AbstractShape s){
 
     }
 }

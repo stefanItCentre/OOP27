@@ -3,7 +3,7 @@ package lesson9.shapes;
 /**
  * Created by stefan on 15.08.16.
  */
-public class Rectangle extends Shape {
+public class Rectangle extends AbstractShape {
 
     private double sideA;
     private double sideB;
@@ -21,5 +21,10 @@ public class Rectangle extends Shape {
     @Override
     public double area() {
         return sideA * sideB;
+    }
+
+    @Override
+    public String getName() {
+        return "Rectangle";
     }
 }

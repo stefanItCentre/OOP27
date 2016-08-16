@@ -3,7 +3,7 @@ package lesson9.shapes;
 /**
  * Created by stefan on 15.08.16.
  */
-public class Circle extends Shape {
+public class Circle extends AbstractShape {
 
     private double radius;
 
@@ -19,5 +19,10 @@ public class Circle extends Shape {
     @Override
     public double area() {
         return Math.pow(radius, 2) * Math.PI;
+    }
+
+    @Override
+    public String getName() {
+        return "Circle";
     }
 }
