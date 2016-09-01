@@ -45,13 +45,20 @@ public class SortOfCustomClasses {
 
 class Person{
 
-    public static final Comparator<Person> BY_AGE = (p1, p2) -> p1.age - p2.age;
-    public static final Comparator<Person> BY_NAME = (p1, p2) -> p1.name.compareTo(p2.name);
+    public static final Comparator<Person> BY_AGE = new CmpByAge();
+
+    public static final Comparator<Person> BY_NAME = new Comparator<Person>() {
+        @Override
+        public int compare(Person o1, Person o2) {
+            return o1.name.compareTo(o2.name);
+        }
+    };
+
     public static final Comparator<Person> BY_SURNAME = (p1, p2) -> p1.surname.compareTo(p2.surname);
 
 
 
-    public String name;
+    private String name;
     private String surname;
     private int age;
 
@@ -65,4 +72,14 @@ class Person{
     public String toString() {
         return String.format("%s, %s, %d", name, surname, age);
     }
+
+    private static class CmpByAge implements Comparator<Person>{
+
+        @Override
+        public int compare(Person o1, Person o2) {
+            return Integer.compare(o1.age, o2.age);
+        }
+    }
+
 }
+
