@@ -12,7 +12,9 @@ public class Test1 {
 
     public static void main(String[] args) {
 
-        ArrayList<String> list = new ArrayList<>(Arrays.asList("aaa", "sawd", "sawd", "sawd", "sawd"));
+        new ArrayStack<String>(1);
+
+//        ArrayList<String> list = new ArrayList<>(Arrays.asList("aaa", "sawd", "sawd", "sawd", "sawd"));
 //
 //
 //        System.out.println(Math.pow(2, 2));
@@ -23,9 +25,9 @@ public class Test1 {
 //
 
 //
-        list.removeIf(Test1::foo);
+//        list.removeIf(Test1::foo);
 
-        System.out.println(list);
+//        System.out.println(list);
 
 //        apply("fooooooo", Test1::foo);
 

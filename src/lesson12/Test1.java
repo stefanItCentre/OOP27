@@ -1,5 +1,7 @@
 package lesson12;
 
+import lesson5.Person;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -9,13 +11,21 @@ import java.util.Objects;
 public class Test1 {
 
     public static void main(String[] args) {
-        int [] array = {0, 0};
 
-        int [] array2 = array;
+        ArrayList<Integer> list1 = new ArrayList<>();
+
+        ArrayList<String> list2 = new ArrayList<>();
+        ArrayList<Person> list3 = new ArrayList<>();
 
 
-        array[0] = 999;
-        System.out.println(array2[0]);
+        Integer i = list1.get(2);
+
+
+//        list2.
+
+        String s = list2.get(0);
+
+
 
 //        new java.util.ArrayDeque<>().add()
 

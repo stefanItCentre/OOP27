@@ -7,18 +7,18 @@ import java.util.function.Function;
 /**
  * Created by stefan on 01.09.16.
  */
-public class LinkedDeque implements Deque {
+public class LinkedDeque<T> implements Deque<T> {
 
-    private Node first;
-    private Node last;
+    private Node<T> first;
+    private Node<T> last;
     private int size;
 
     @Override
-    public boolean pushFirst(int elem) {
+    public boolean pushFirst(T elem) {
         if(size == 0){
-            last = first = new Node(elem);
+            last = first = new Node<>(elem);
         } else {
-            Node nd = new Node(elem);
+            Node<T> nd = new Node<>(elem);
             nd.prev = first;
             first.next = nd;
             first = nd;
@@ -28,14 +28,14 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public boolean pushLast(int elem) {
+    public boolean pushLast(T elem) {
         return false;
     }
 
     @Override
-    public Integer popFirst() {
+    public T popFirst() {
         if(size == 0) return null;
-        int tmp = first.value;
+        T tmp = first.value;
         if(first == last){
             first = last = null;
         } else {
@@ -47,17 +47,17 @@ public class LinkedDeque implements Deque {
     }
 
     @Override
-    public Integer popLast() {
+    public T popLast() {
         return null;
     }
 
     @Override
-    public Integer takeFirst() {
+    public T takeFirst() {
         return null;
     }
 
     @Override
-    public Integer takeLast() {
+    public T takeLast() {
         return null;
     }
 
@@ -72,17 +72,27 @@ public class LinkedDeque implements Deque {
     }
 
 
-    public void forEachFirst(Consumer<Integer> cons){
+    public void forEachFirst(Consumer<T> cons){
         cons.accept(first.value);
     }
 
-    public void forEachLast(Consumer<Integer> cons){
+    public void forEachLast(Consumer<T> cons){
+
+    }
+
+
+    public<V, E> void foo(V val, E elem){
+
 
     }
 
     //*
-    public Deque map(Function<Integer, Integer> mapper){
-        return null;
+    public<E> Deque<E> map(Function<T, E> mapper){
+        Deque<E> res = new LinkedDeque<>();
+        for(Node<T> nd = last; nd != null; nd = nd.next){
+            res.pushFirst(mapper.apply(nd.value));
+        }
+        return res;
     }
 
 
@@ -106,7 +116,7 @@ public class LinkedDeque implements Deque {
 
 
     public static void main(String[] args) {
-        LinkedDeque deque = new LinkedDeque();
+        LinkedDeque<Integer> deque = new LinkedDeque<>();
 
         deque.pushFirst(3);
         deque.pushFirst(1);
@@ -115,16 +125,30 @@ public class LinkedDeque implements Deque {
         deque.pushFirst(2);
         deque.pushFirst(4);
 
-        Deque result = deque.map((e) -> (int)Math.pow(e, 2));
 
 
-
-        deque.forEachFirst(new Consumer<Integer>() {
+//        Deque<String> result = deque.map(String::valueOf);
+        Deque<String> result = deque.map(new Function<Integer, String>() {
             @Override
-            public void accept(Integer integer) {
-                System.out.println(integer);
+            public String apply(Integer integer) {
+                return null;
             }
         });
+
+//        System.out.println(result.popFirst().charAt(0));
+        System.out.println(result);
+        System.out.println(deque);
+
+
+
+
+
+//        deque.forEachFirst(new Consumer<Integer>() {
+//            @Override
+//            public void accept(Integer integer) {
+//                System.out.println(integer);
+//            }
+//        });
 
 
     }
@@ -135,16 +159,16 @@ public class LinkedDeque implements Deque {
 //    }
 
     //nested class
-    private static class Node{
-        Node next;
-        Node prev;
-        int value;
+    private static class Node<V>{
+        Node<V> next;
+        Node<V> prev;
+        V value;
 
-        public Node(int value) {
+        public Node(V value) {
             this.value = value;
         }
 
-        public Node(Node next, Node prev, int value) {
+        public Node(Node<V> next, Node<V> prev, V value) {
             this.next = next;
             this.prev = prev;
             this.value = value;

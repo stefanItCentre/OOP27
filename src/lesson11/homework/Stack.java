@@ -3,13 +3,13 @@ package lesson11.homework;
 /**
  * Created by stefan on 22.08.16.
  */
-public interface Stack {
+public interface Stack<T> {
 
-    boolean push(int element);
+    boolean push(T element);
 
-    Integer pop();
+    T pop();
 
-    Integer take();
+    T take();
 
     int size();
 

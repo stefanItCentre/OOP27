@@ -7,8 +7,9 @@ public class Test2 {
 
     public static void main(String[] args) {
 
-        test("bar", Test2::blabla);
+//        test("bar", Test2::blabla);
 
+        new Aa<String>().test((e) -> "").test((e)-> "");
     }
 
     public static void test (String arg, Foo f){
@@ -20,8 +21,25 @@ public class Test2 {
     }
 }
 
-interface Foo{
+interface Foo<A, R>{
 
-    String foo (String str);
+    R foo (A a);
 
+}
+
+class Aa<T> {
+
+    public<N> Aa<N> test(Foo<T, N> foo){
+        Aa<N> a = new Aa<>();
+        a.take(foo.foo(get()));
+        return a;
+    }
+
+    public T get(){
+        return null;
+    }
+
+    public void take(T val){
+
+    }
 }
