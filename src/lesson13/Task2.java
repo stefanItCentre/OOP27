@@ -7,6 +7,7 @@ import java.util.Objects;
 /**
  * Created by stefan on 06.09.16.
  */
+
 public class Task2 {
 
     public static void main(String[] args) {

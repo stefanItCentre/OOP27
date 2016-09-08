@@ -1,4 +1,4 @@
-/**
+package lesson13; /**
  * Created by stefan on 06.09.16.
  */
 
@@ -11,7 +11,7 @@ import java.util.function.Predicate;
  * Рализовать в структурах ArrayList(На основе массива) и LinkedList(Дважды связный список)
  * Допускается и приветствуется обобщенная скелетная реализация в абстрактном классе по усмотрению автора
  * */
-public interface List<E> {
+public interface List<E> extends Iterable<E> {
 
 
 
@@ -70,7 +70,7 @@ public interface List<E> {
 
     void removeIf(Predicate<E> prd);
 
-    void forEach(Consumer<E> cons);
+//    void forEach(Consumer<E> cons);
 
     <T> List<T> map(Function<E, T> func);
 
@@ -130,6 +130,9 @@ public interface List<E> {
 
     boolean addAll(List<? extends E> list);
 
+    boolean getAll(List<? super E> stock);
+
+    
     /**
      * Вставляет все элементы в этот список из переданного списка по указанному индексу
      *
