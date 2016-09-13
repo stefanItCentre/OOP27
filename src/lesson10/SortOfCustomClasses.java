@@ -23,7 +23,8 @@ public class SortOfCustomClasses {
 //        Collections.sort(persons, Person.BY_AGE);
 
 
-        Collections.sort(persons, Person.BY_NAME.reversed().thenComparing(Person.BY_AGE));
+
+        Collections.sort(persons);
 
 
         System.out.println(persons);
@@ -42,8 +43,7 @@ public class SortOfCustomClasses {
 }
 
 
-
-class Person{
+class Person implements Comparable<Person>{
 
     public static final Comparator<Person> BY_AGE = new CmpByAge();
 
@@ -71,6 +71,12 @@ class Person{
     @Override
     public String toString() {
         return String.format("%s, %s, %d", name, surname, age);
+    }
+
+
+    @Override
+    public int compareTo(Person o) {
+        return this.age - o.age;
     }
 
     private static class CmpByAge implements Comparator<Person>{
