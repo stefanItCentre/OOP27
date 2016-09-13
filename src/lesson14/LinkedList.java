@@ -1,6 +1,7 @@
 package lesson14;
 
 import lesson13.List;
+import lesson15.hw.AbstractList;
 
 import java.util.Iterator;
 import java.util.function.BiFunction;
@@ -11,7 +12,7 @@ import java.util.function.Predicate;
 /**
  * Created by stefan on 08.09.16.
  */
-public class LinkedList<E> implements List<E> {
+public class LinkedList<E> extends AbstractList<E> implements List<E> {
 
     private Node<E> first;
     private Node<E> last;
@@ -114,10 +115,15 @@ public class LinkedList<E> implements List<E> {
         }
     }
 
-    @Override
-    public boolean addAll(List<? extends E> list) {
-        return addAll(size(), list);
-    }
+//    @Override
+//    public boolean addAll(List<? extends E> list) {
+//        return addAll(size(), list);
+//    }
+//
+//    @Override
+//    public boolean getAll(List<? super E> stock) {
+//        return false;
+//    }
 
     @Override
     public boolean addAll(int idx, List<? extends E> c) {
@@ -147,7 +153,30 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new MyIter<>(this);
+    }
+
+    private static class MyIter<E> implements Iterator<E>{
+
+        LinkedList<E> data;
+        Node<E> current;
+
+        public MyIter(LinkedList<E> list){
+            data = list;
+            current = data.first;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public E next() {
+            E tmp = current.value;
+            current = current.next;
+            return tmp;
+        }
     }
 
     private void checkIdx(int idx){
@@ -175,10 +204,16 @@ public class LinkedList<E> implements List<E> {
         list.add(9);
         list.add(0);
 
-        System.out.println(list);
-        list.add(5, 999);
-        System.out.println(list);
+//        list.forEach(LinkedList::foo);
 
+        for(Integer i : list){
+            System.out.println(i);
+        }
+
+
+    }
+
+    public static void foo(Integer f){
 
     }
 

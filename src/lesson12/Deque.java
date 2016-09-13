@@ -1,8 +1,11 @@
 package lesson12;
 
+import lesson11.homework.Queue;
+
 /**
  * Created by stefan on 01.09.16.
  */
+
 public interface Deque<T> {
 
     boolean pushFirst(T elem);

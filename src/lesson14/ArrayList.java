@@ -8,12 +8,13 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 import lesson13.List;
+import lesson15.hw.AbstractList;
 
 /**
  * Created by stefan on 08.09.16.
  */
 
-public class ArrayList<T> implements List<T> {
+public class ArrayList<T> extends AbstractList<T> implements List<T> {
 
     private static final int DEFAULT_CAPACITY = 10;
 
@@ -242,11 +243,6 @@ public class ArrayList<T> implements List<T> {
         {
             array[i] = null;
         }
-    }
-
-    @Override
-    public boolean addAll(List<? extends T> list) {
-        return false;
     }
 
     @Override
